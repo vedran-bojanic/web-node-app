@@ -1,0 +1,17 @@
+{
+  "name": "web-node-app",
+  "version": "1.0.0",
+  "description": "Testing application for NodeJS.",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "8.5.0"
+  },
+  "author": "Vedran",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
