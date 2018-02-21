@@ -13,12 +13,24 @@ app.set('port', 3000);
 
 app.use(express.static(publicPath));
 
+// Listening when new user connects
 io.on('connection', (socket) => {
-   console.log('New user connected!');
+    console.log('User is online!');
 
-   socket.on('disconnect', () => {
-      console.log('User disconnected from server.')
-   });
+    // Listen for event from chat app
+    socket.on('createMessage', (message) => {
+        console.log('Create Message', message);
+        io.emit('newMessage', {
+            from: message.from,
+            text: message.text,
+            createdAt: new Date().getTime()
+        });
+    });
+
+    // Listening when user disconnects
+    socket.on('disconnect', () => {
+        console.log('User went offline.');
+    })
 });
 
 // Listen the requests
